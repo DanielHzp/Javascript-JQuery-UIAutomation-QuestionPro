@@ -1,0 +1,23 @@
+POSTJS_Q17_S34B1
+var arr = $survey.getSelectedOptions("Q17");
+
+$survey.updateCustomVariable(8, "0");
+
+var found = false;
+
+if (arr && arr.length > 0) {
+
+    for (var i = 0; i < arr.length; i++) {
+        var item = arr[i].toString().toLowerCase();
+
+        if (item.indexOf("aveeno") !== -1) {
+            found = true;
+            break;
+        }
+    }
+}
+
+if (!found) {
+    console.log("Enters if Aveeno NOT selected");
+    $survey.updateCustomVariable(8, "1");
+}
