@@ -1,4 +1,4 @@
-PREJS_Q30_S34B1_POPULATE_COLUMNS
+PREJS_Q30_S34B1
 
     // 1. Get selected brands from Q16
     var selectedBrands = $survey.getSelectedOptions("Q16") || [];
