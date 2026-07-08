@@ -39,6 +39,11 @@ if (!found) {
     console.log("Enters if neither wash nor moisturizer selected");
     $survey.updateCustomVariable(14, "1");
 }
+//If neither category 1 nor category 2 assigned
+
+
+
+
 
 
 
