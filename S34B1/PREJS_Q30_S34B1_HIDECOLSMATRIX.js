@@ -22,12 +22,22 @@ PREJS_Q30_S34B1
             if(index === 0) return;
 
             var headerText = $(this).text().trim().toLowerCase();
+            
+            console.log("headerText: "+headerText+" index: "+index);
 
             // Always keep "None of the above"
             if(headerText === "none of the above") return;
 
+            // Always keep "Other"
+            if(headerText === "other") return;
+
+            
+          
+
             // 4. If NOT selected → hide column everywhere
             if(selectedBrands.indexOf(headerText) === -1){
+
+                console.log(headerText+" NOT FOUND AMONG SELECTED OPTIONS IN Q16 ");
 
                 // Hide header cell
                 $(this).hide();
