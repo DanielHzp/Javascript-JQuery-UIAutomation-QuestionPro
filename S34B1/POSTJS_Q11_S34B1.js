@@ -1,6 +1,8 @@
 POSTJS_Q11_S34B1
+
 var matrixAnsIndex=$survey.getSelectedOptionsIndex("Q11");
 var matrixAns=$survey.getSelectedOptions("Q11");
+
 
 // Loop all checked radios (one per row)
 $("input[type='radio']:checked").each(function () {
@@ -38,16 +40,47 @@ console.log("Enters if NOT contains stopped shopping for...");
 $survey.updateCustomVariable(6, "0");
 }
 
-//flag=1 if online or retailer website selected in Q10 and 'Stopped SHOPPING' NOT selected at Q11
+//Custom50 and custom51 flags, not online/retailer website 
+if(!rowText.toLowerCase().includes("online") && !rowText.toLowerCase().includes("website") )
+{
+    if (!colTitle.toLowerCase().includes("stopped"))
+    {
+        $survey.updateCustomVariable(50, "1");
+        console.log("Not selected online/retailer and NOT stopped shopping there");
+    }
+
+    if (colTitle.toLowerCase().includes("stopped"))
+    {
+        $survey.updateCustomVariable(51, "1");
+        console.log("Not selected online/retailer and stopped shopping there");
+    }
+
+    
+
+}
+
+
+//custom52 and custom53 flags for online/retailer website
 if(rowText.toLowerCase().includes("online") || rowText.toLowerCase().includes("website") )
 {
 console.log("Enters if online or website selected...");
 
 $survey.updateCustomVariable(7, "0");
 
+
+
 if (!colTitle.toLowerCase().includes("stopped"))
 {
     $survey.updateCustomVariable(7, "1");
+
+    $survey.updateCustomVariable(52, "1");
+    console.log("Selected online/retailer and NOT stopped shopping there")
+}
+
+if (colTitle.toLowerCase().includes("stopped"))
+{
+    $survey.updateCustomVariable(53, "1");
+    console.log("Selected online/retailer and stopped shopping there");
 }
 
 }
@@ -55,3 +88,4 @@ if (!colTitle.toLowerCase().includes("stopped"))
 
 });
 
+console.log("============= Exit Q11 =============");
