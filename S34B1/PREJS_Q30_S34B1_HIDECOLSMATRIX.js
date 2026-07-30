@@ -1,13 +1,18 @@
 PREJS_Q30_S34B1
 
-    // 1. Get selected brands from Q16
+   console.log("=========== Enter Q30 =========== ");   
+ // 1. Get selected brands from Q16
     var selectedBrands = $survey.getSelectedOptions("Q16") || [];
-    console.log(selectedBrands);
+    console.log("Selected brands from Q16: "+selectedBrands);
 
     // Normalize (safety: trim + lowercase)
     selectedBrands = selectedBrands.map(function(b){
         return String(b).trim().toLowerCase();
     });
+
+    //Was other selected in Q16?
+    var otherSelected = selectedBrands.indexOf("other") > -1;
+    console.log("Other selected:", otherSelected);
 
     // 2. Target Q30 matrix
     var $q30 = $(".Q30");
@@ -22,22 +27,48 @@ PREJS_Q30_S34B1
             if(index === 0) return;
 
             var headerText = $(this).text().trim().toLowerCase();
-            
-            console.log("headerText: "+headerText+" index: "+index);
+
+              console.log("headerText: "+headerText+" index: "+index);
 
             // Always keep "None of the above"
             if(headerText === "none of the above") return;
 
-            // Always keep "Other"
-            if(headerText === "other") return;
+           // Always keep "Other"
+           //if(headerText.indexOf("other") === 0){
+           //return;
+          //}
 
-            
+          // Detect Other column using hidden marker
+           var isOtherColumn = headerText.indexOf("other") > -1;
           
+            if (isOtherColumn) {
 
-            // 4. If NOT selected → hide column everywhere
+                console.log("Other column detected");   
+                
+                // Keep if Other was selected in Q16
+                 if (otherSelected) {
+
+                console.log("Keeping Other column"); 
+
+                return;          }
+            
+         // Hide if Other was NOT selected          
+         console.log("Hiding Other column");      
+               
+         $(this).hide();
+
+         $table.find("tbody tr").each(function () {
+
+         $(this).find("td").eq(index).hide();            });
+
+                return;     
+            }
+
+            // 4. If NOT selected in Q16 then hide column everywhere
             if(selectedBrands.indexOf(headerText) === -1){
 
-                console.log(headerText+" NOT FOUND AMONG SELECTED OPTIONS IN Q16 ");
+            
+             console.log(headerText+" NOT FOUND AMONG SELECTED OPTIONS IN Q16 ");
 
                 // Hide header cell
                 $(this).hide();
