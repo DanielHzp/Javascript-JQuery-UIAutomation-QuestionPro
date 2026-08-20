@@ -1,7 +1,7 @@
 PREJS_REDIRECT_CHAINSURVEY
 
 
-
+//=======================================Q1 REDIRECT PREJS=========================================
 //Try to read browser info from globalized object in QPro DOM
 var ep = window.cvData.browserType;
 
@@ -22,13 +22,7 @@ $answer.prop('checked', true).trigger('change');
 
 
 
-
-
-
-
-
-
-
+//Original version
 var ep = window.cvData.browserType;
 // for testing -> var ep = "IN_APP_BROWSER"
 console.log("ep = " + ep);
@@ -37,4 +31,18 @@ var pos = (ep == "IN_APP_BROWSER") ? "2" : "1";
 console.log("pos = " + pos);
 
 var $radio = $('input[type=radio][aria-posinset="' + pos + '"]');
+$radio.prop('checked', true).trigger('change');
+
+
+//=======================================Q2 REDIRECT PREJS=========================================
+
+var ep = window.cvData.browserType;
+// for testing -> var ep = "IN_APP_BROWSER"
+console.log("ep = " + ep);
+
+var pos = (ep == "IN_APP_BROWSER") ? "1" : "2";
+console.log("pos = " + pos);
+
+var $radio = $('input[type=radio].EP[aria-posinset="' + pos + '"]');
+
 $radio.prop('checked', true).trigger('change');
