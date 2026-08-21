@@ -13,13 +13,14 @@ if (isNaN(hhsize)) {
 // .eq(0) = first radio option
 // .eq(1) = second radio option
 
-var optionIndexToSelect = hhsize < 11 ? 1 : 0;
+var optionIndexToSelect = hhsize < 2 ? 1 : 0;
 
 console.log("optionIndexToSelect: "+optionIndexToSelect);
 
-var $options = $('.M10REDIRECT input[type="radio"]');
+var $options = $('.M1REDIRECT input[type="radio"]');
 
 if ($options.length > optionIndexToSelect) {
+    
     $options.eq(optionIndexToSelect)
         .prop('checked', true)
         .trigger('click')
