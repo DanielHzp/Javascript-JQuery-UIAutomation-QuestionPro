@@ -34,6 +34,50 @@ var $radio = $('input[type=radio][aria-posinset="' + pos + '"]');
 $radio.prop('checked', true).trigger('change');
 
 
+
+//Q1 REDIRECT PREJS VERSION 2
+
+console.log("======ENTER EP d-none =======");
+
+//Try to read browser information
+var userAgent=navigator.userAgent;
+console.log("userAgent = "+userAgent);
+
+//Try to read browser info from globalized object in QPro DOM
+var ep = window.cvData.browserType;
+console.log("ep = " + ep);
+
+
+var optionSelect = (ep == "IN_APP_BROWSER") ? "2" : "1";
+
+console.log("optionSelect = " + optionSelect);
+
+var $answer = $('input[type=radio][aria-posinset="' + optionSelect + '"]');
+$answer.prop('checked', true).trigger('change');
+
+
+var index= (ep == "IN_APP_BROWSER") ? 1 : 0;
+console.log(" index: "+index);
+
+var $options = $('.EP input[type="radio"]');
+
+    $options.eq(index)
+        .prop('checked', true)
+        .trigger('click')
+        .trigger('change');
+
+var selectedValueREDIRECT=$survey.getSelectedOption("EP");
+console.log("==================== selectedValueREDIRECT:  =========================> " + selectedValueREDIRECT);
+
+
+
+
+
+
+
+
+
+
 //=======================================Q2 REDIRECT PREJS=========================================
 
 var ep = window.cvData.browserType;
@@ -46,3 +90,34 @@ console.log("pos = " + pos);
 var $radio = $('input[type=radio].EP[aria-posinset="' + pos + '"]');
 
 $radio.prop('checked', true).trigger('change');
+
+
+
+
+// Q2 REDIRECT PREJS VERSION 2
+
+console.log("========== ENTER EP REDIRECT ================");
+
+var ep = window.cvData.browserType;
+// for testing -> var ep = "IN_APP_BROWSER"
+console.log("ep = " + ep);
+
+var pos = (ep == "IN_APP_BROWSER") ? "1" : "2";
+console.log("pos = " + pos);
+
+var index = (ep == "IN_APP_BROWSER") ? 0 : 1;
+console.log("index = " + index );
+
+var $radio = $('input[type=radio].EP[aria-posinset="' + pos + '"]');
+
+$radio.prop('checked', true).trigger('change');
+
+var $options = $('.EP input[type="radio"]');
+
+    $options.eq(index)
+        .prop('checked', true)
+        .trigger('click')
+        .trigger('change');
+
+var selectedValueREDIRECT=$survey.getSelectedOption("EP");
+console.log("==================== selectedValueREDIRECT:  =========================> " + selectedValueREDIRECT);
