@@ -17,7 +17,7 @@ var optionIndexToSelect = hhsize < 2 ? 1 : 0;
 
 console.log("optionIndexToSelect: "+optionIndexToSelect);
 
-var $options = $('.M1REDIRECT input[type="radio"]');
+var $options = $('.HoH input[type="radio"]');
 
 if ($options.length > optionIndexToSelect) {
     
