@@ -6,7 +6,7 @@ function logCustomVariables() {
     var customVars = {};
 
 // it goes up to 255 custom variables
-    for (var i = 1; i <= 100; i++) {
+    for (var i = 1; i <= 200; i++) {
         customVars["custom" + i] = $survey.surveyResponseJson["custom" + i];
     }
 
