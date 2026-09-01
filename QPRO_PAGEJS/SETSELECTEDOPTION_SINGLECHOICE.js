@@ -1,4 +1,4 @@
-SETSELECTEDOPTION_SINGLECHOICE
+//SETSELECTEDOPTION_SINGLECHOICE
 
 //Set selected option in Q893
 $('.Q893 label').each(function () {
@@ -9,3 +9,9 @@ $('.Q893 label').each(function () {
         $(this).find('input[type="radio"]').prop('checked', true);
     }
 });
+
+
+//Using $survey object
+$survey.setOptionSelected("Q2", i+1); //Q2 must be in the same page 
+//where this function is called
+
