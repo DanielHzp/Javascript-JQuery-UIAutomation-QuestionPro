@@ -14,7 +14,8 @@ $(document).ready(function () {
         if (message) {
             event.preventDefault();
             event.stopImmediatePropagation();
-            alert(message);
+            alert(messa
+            ge);
             return false;
         }
     }, true);
